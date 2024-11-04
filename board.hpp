@@ -11,10 +11,11 @@ class board
   public:
     board() {
       white=black=0;
-      white=white&(1ll<<getshiftfromco(3,3));
-      white&=(1ll<<getshiftfromco(4,4));
-      black&=(1ll<<getshiftfromco(3,4));
-      black&=(1ll<<getshiftfromco(4,3));
+      white|=(1ll<<getshiftfromco(3,3));
+      white|=(1ll<<getshiftfromco(4,4));
+      black|=(1ll<<getshiftfromco(3,4));
+      black|=(1ll<<getshiftfromco(4,3));
+      // std::cout<<white<<' '<<black<<std::endl;
     }
     void print(){
       for(int i=0;i<8;++i){
@@ -28,8 +29,5 @@ class board
         }
         std::cout<<'\n';
       }
-    }
-    void printnum(){
-      std::cout<<white<<' '<<black<<std::endl;
     }
 };

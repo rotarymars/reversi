@@ -3,5 +3,4 @@
 int main() {
   board b;
   b.print();
-  b.printnum();
 }
