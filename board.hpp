@@ -92,8 +92,10 @@ public:
                 nw += gw[k];
                 if (nh < 0 || nh >= 8 || nw < 0 || nw >= 8)
                   break;
+                if(!(black&(1ll<<getshiftfromco(nh,nw)))&&!(white&(1ll<<getshiftfromco(nh,nw))))
+                  break;
                 if (white & (1ll << getshiftfromco(nh, nw))) {
-                  ret.push_back(getshiftfromco(nh, nw));
+                  ret.push_back(getshiftfromco(i, j));
                   break;
                 }
               }
@@ -119,8 +121,10 @@ public:
                 nw += gw[k];
                 if (nh < 0 || nh >= 8 || nw < 0 || nw >= 8)
                   break;
+                if(!(black&(1ll<<getshiftfromco(nh,nw)))&&!(white&(1ll<<getshiftfromco(nh,nw))))
+                  break;
                 if (black & (1ll << getshiftfromco(nh, nw))) {
-                  ret.push_back(getshiftfromco(nh, nw));
+                  ret.push_back(getshiftfromco(i, j));
                   break;
                 }
               }
