@@ -4,6 +4,7 @@ class board {
 private:
   long long white, black;
 
+  int whitescore,blackscore;
   constexpr int getshiftfromco(int h, int w) { return 63 - h * 8 + w; }
 
   int weight[64] = {30, -12, 0,   -1,  -1, 0,   -12, 30, -12, -15, -3,  -3, -3,
@@ -28,6 +29,7 @@ public:
     white |= (1ll << getshiftfromco(4, 4));
     black |= (1ll << getshiftfromco(3, 4));
     black |= (1ll << getshiftfromco(4, 3));
+    whitescore=blackscore=-2;
     // std::cout<<white<<' '<<black<<std::endl;
   }
   void print() {
@@ -135,4 +137,5 @@ public:
     }
     return ret;
   }
+
 };
