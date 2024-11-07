@@ -4,7 +4,7 @@ class board {
 private:
   long long white, black;
 
-  int whitescore,blackscore;
+  int whitescore, blackscore;
   constexpr int getshiftfromco(int h, int w) { return 63 - h * 8 + w; }
 
   int weight[64] = {30, -12, 0,   -1,  -1, 0,   -12, 30, -12, -15, -3,  -3, -3,
@@ -29,7 +29,7 @@ public:
     white |= (1ll << getshiftfromco(4, 4));
     black |= (1ll << getshiftfromco(3, 4));
     black |= (1ll << getshiftfromco(4, 3));
-    whitescore=blackscore=-2;
+    whitescore = blackscore = -2;
     // std::cout<<white<<' '<<black<<std::endl;
   }
   void print() {
@@ -94,7 +94,8 @@ public:
                 nw += gw[k];
                 if (nh < 0 || nh >= 8 || nw < 0 || nw >= 8)
                   break;
-                if(!(black&(1ll<<getshiftfromco(nh,nw)))&&!(white&(1ll<<getshiftfromco(nh,nw))))
+                if (!(black & (1ll << getshiftfromco(nh, nw))) &&
+                    !(white & (1ll << getshiftfromco(nh, nw))))
                   break;
                 if (white & (1ll << getshiftfromco(nh, nw))) {
                   ret.push_back(getshiftfromco(i, j));
@@ -123,7 +124,8 @@ public:
                 nw += gw[k];
                 if (nh < 0 || nh >= 8 || nw < 0 || nw >= 8)
                   break;
-                if(!(black&(1ll<<getshiftfromco(nh,nw)))&&!(white&(1ll<<getshiftfromco(nh,nw))))
+                if (!(black & (1ll << getshiftfromco(nh, nw))) &&
+                    !(white & (1ll << getshiftfromco(nh, nw))))
                   break;
                 if (black & (1ll << getshiftfromco(nh, nw))) {
                   ret.push_back(getshiftfromco(i, j));
@@ -138,4 +140,9 @@ public:
     return ret;
   }
 
+  bool isplaced(int h, int w) {
+    long long a = white & (1ll << getshiftfromco(h, w)),
+              b = black & (1ll << getshiftfromco(h, w));
+    return (a || b);
+  }
 };
